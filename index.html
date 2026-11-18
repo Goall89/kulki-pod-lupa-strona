@@ -14,9 +14,8 @@
 <body>
 <div style="width:100%;max-width:1360px;margin:0 auto;background:#F6F0FB;color:#2A1245;font-family:'Inter',system-ui,sans-serif">
 
-<!-- NAV + HERO (gradient) -->
-<div style="background:linear-gradient(180deg,#BDA0E4 0%,#AD79CC 100%)">
-<header style="background:transparent;color:#2A1245">
+<!-- NAV (przyklejone do góry podczas przewijania) -->
+<header class="site-header" style="color:#2A1245">
 <div style="max-width:1200px;margin:0 auto;padding:18px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
 <a href="#top" style="display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:#2A1245">
 <img src="images/maskotka.jpg" alt="" style="width:36px;height:36px;border-radius:50%;object-fit:cover">
@@ -34,7 +33,8 @@ Kulki pod lupą
 </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (gradient) -->
+<div style="background:linear-gradient(180deg,#BDA0E4 0%,#AD79CC 100%)">
 <section id="top" style="background:transparent;color:#2A1245;padding:48px 0 96px">
 <div style="max-width:1200px;margin:0 auto;padding:0 40px;display:flex;flex-wrap:wrap;align-items:center;gap:48px">
 <div style="flex:1 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px">
@@ -331,5 +331,15 @@ Kulki pod lupą
 
 </div>
 <script src="js/form.js"></script>
+<script>
+// cień pod przyklejonym menu, gdy strona jest przewinięta
+(function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  function update() { header.classList.toggle('is-scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
